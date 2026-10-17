@@ -5,22 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>அஹ்லுல் வஃபா - اهل الوفاء</title>
     <!-- Google Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Amiri:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <style>
         :root {
-            --primary: #0F766E;
-            --primary-dark: #115E59;
+            --primary: #0D9488;
+            --primary-dark: #0F766E;
             --primary-light: #CCFBF1;
             --accent-teal: #14B8A6;
-            --bg-main: #F4F8FB;
+            --bg-main: #0F172A;
             --surface: #FFFFFF;
             --text-main: #0F172A;
             --text-sub: #64748B;
-            --border: #CBD5E1;
-            --border-light: #E2E8F0;
-            --shadow-premium: 0 25px 50px -12px rgba(15, 23, 42, 0.18), 0 0 0 1px rgba(15, 118, 110, 0.08);
-            --card-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 0 0 1px rgba(203, 213, 225, 0.6);
+            --border-shading: rgba(13, 148, 136, 0.4);
+            --card-shading: 0 10px 30px -5px rgba(13, 148, 136, 0.15), 0 0 0 1.5px rgba(13, 148, 136, 0.25);
         }
 
         * {
@@ -32,7 +30,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #E2E8F0 0%, #F8FAFC 50%, #E0F2FE 100%);
+            background: linear-gradient(135deg, #090D16 0%, #0F172A 50%, #134E4A 100%);
             color: var(--text-main);
             display: flex;
             justify-content: center;
@@ -46,15 +44,14 @@
             max-width: 440px;
             height: 100vh;
             max-height: 880px;
-            background: var(--surface);
+            background: #F8FAFC;
             display: flex;
             flex-direction: column;
-            box-shadow: var(--shadow-premium);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(13, 148, 136, 0.2);
             position: relative;
             overflow: hidden;
             border-radius: 36px;
-            border: 2px solid rgba(255, 255, 255, 0.9);
-            outline: 1px solid rgba(15, 118, 110, 0.2);
+            border: 2px solid rgba(13, 148, 136, 0.4);
         }
 
         @media (max-width: 440px) {
@@ -63,35 +60,68 @@
                 max-height: 100vh;
                 border-radius: 0;
                 border: none;
-                outline: none;
             }
         }
 
-        /* High-Class App Bar */
+        /* App Bar with Logo & Large Title */
         .app-bar {
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(16px);
-            padding: 18px 24px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 14px 18px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1.5px solid var(--border-light);
+            border-bottom: 2px solid rgba(13, 148, 136, 0.25);
             z-index: 20;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            box-shadow: 0 4px 20px rgba(13, 148, 136, 0.08);
         }
 
-        .app-title h1 {
-            font-size: 17px;
+        .brand-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-circle {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 8px 20px rgba(13, 148, 136, 0.4);
+            border: 2px solid #5EEAD4;
+            position: relative;
+        }
+
+        .logo-circle::after {
+            content: '⚖️';
+            font-size: 20px;
+        }
+
+        .app-title-box {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .decorated-title {
+            font-size: 19px;
             font-weight: 800;
-            color: var(--text-main);
+            background: linear-gradient(135deg, #0F766E 0%, #0D9488 50%, #14B8A6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             letter-spacing: -0.4px;
         }
 
-        .app-title p {
-            font-size: 11px;
-            color: var(--text-sub);
-            font-weight: 600;
-            letter-spacing: 0.2px;
+        .arabic-subtitle {
+            font-family: 'Amiri', serif;
+            font-size: 13px;
+            color: #0D9488;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            opacity: 0.95;
         }
 
         /* Content Scroll Area */
@@ -99,7 +129,7 @@
             flex: 1;
             overflow-y: auto;
             padding: 20px 20px 100px 20px;
-            background: var(--bg-main);
+            background: #F1F5F9;
         }
 
         .content::-webkit-scrollbar {
@@ -108,55 +138,43 @@
 
         .tab-content {
             display: none;
-            animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            animation: fadeInLux 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .tab-content.active {
             display: block;
         }
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(12px); }
+        @keyframes fadeInLux {
+            from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Premium Hero Banner */
+        /* Luxury Hero Banner */
         .banner {
-            background: linear-gradient(135deg, #0F766E 0%, #0D9488 50%, #14B8A6 100%);
+            background: linear-gradient(135deg, #0F766E 0%, #0D9488 50%, #042F2E 100%);
             color: white;
             padding: 26px;
-            border-radius: 24px;
+            border-radius: 26px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 12px 30px rgba(15, 118, 110, 0.25);
+            box-shadow: 0 15px 35px rgba(13, 148, 136, 0.3);
             margin-bottom: 24px;
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .banner::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 140px;
-            height: 140px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 50%;
+            border: 2px solid rgba(94, 234, 212, 0.4);
         }
 
         .banner h2 {
             font-size: 18px;
             font-weight: 800;
             margin-bottom: 6px;
-            letter-spacing: -0.3px;
         }
 
         .banner p {
             font-size: 12px;
-            opacity: 0.95;
+            opacity: 0.9;
             font-weight: 500;
         }
 
@@ -172,24 +190,22 @@
             font-size: 15px;
             font-weight: 700;
             color: var(--text-main);
-            letter-spacing: -0.3px;
         }
 
         /* Summary Grid */
         .summary-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
+            gap: 14px;
             margin-bottom: 24px;
         }
 
         .summary-card {
-            background: var(--surface);
+            background: #FFFFFF;
             padding: 18px;
-            border-radius: 20px;
-            border: 1.5px solid var(--border);
-            box-shadow: var(--card-shadow);
-            transition: transform 0.2s ease;
+            border-radius: 22px;
+            border: 1.5px solid rgba(13, 148, 136, 0.3);
+            box-shadow: var(--card-shading);
         }
 
         .summary-card.full-width {
@@ -197,14 +213,14 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 16px 20px;
+            padding: 18px 22px;
             background: linear-gradient(135deg, #FFFFFF 0%, #F0FDFA 100%);
-            border-color: #5EEAD4;
+            border: 1.5px solid #5EEAD4;
         }
 
         .summary-card .icon-box {
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             border-radius: 14px;
             display: flex;
             align-items: center;
@@ -216,20 +232,20 @@
             margin-bottom: 0;
             background: #CCFBF1;
             color: var(--primary);
+            border: 1px solid #5EEAD4;
         }
 
-        .summary-card.pending .icon-box { background: #FEF3C7; color: #D97706; }
-        .summary-card.completed .icon-box { background: #D1FAE5; color: #059669; }
+        .summary-card.pending .icon-box { background: #FEF3C7; color: #D97706; border: 1px solid #FDE68A; }
+        .summary-card.completed .icon-box { background: #D1FAE5; color: #059669; border: 1px solid #A7F3D0; }
 
         .summary-card h3 {
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 800;
-            letter-spacing: -0.5px;
         }
 
         .summary-card.pending h3 { color: #D97706; }
         .summary-card.completed h3 { color: #059669; }
-        .summary-card.full-width h3 { color: var(--primary); font-size: 20px; }
+        .summary-card.full-width h3 { color: var(--primary); font-size: 21px; }
 
         .summary-card p {
             font-size: 12px;
@@ -238,20 +254,15 @@
             margin-top: 2px;
         }
 
-        /* Cards for Services & Donors */
+        /* Cards with Admin Action Buttons */
         .card-item {
-            background: var(--surface);
+            background: #FFFFFF;
             padding: 20px;
-            border-radius: 20px;
-            border: 1.5px solid var(--border);
+            border-radius: 22px;
+            border: 1.5px solid rgba(13, 148, 136, 0.25);
             margin-bottom: 14px;
-            box-shadow: var(--card-shadow);
-            transition: all 0.2s ease;
-        }
-
-        .card-item:hover {
-            border-color: var(--primary);
-            box-shadow: 0 12px 30px -5px rgba(15, 118, 110, 0.12);
+            box-shadow: var(--card-shading);
+            position: relative;
         }
 
         .card-header {
@@ -273,7 +284,6 @@
             color: var(--text-sub);
             margin-bottom: 14px;
             line-height: 1.5;
-            font-weight: 400;
         }
 
         .card-footer {
@@ -283,9 +293,48 @@
             font-size: 12px;
             color: var(--text-sub);
             font-weight: 500;
-            border-top: 1px solid var(--border-light);
+            border-top: 1px solid rgba(13, 148, 136, 0.15);
             padding-top: 12px;
             margin-top: 4px;
+        }
+
+        /* Admin Controls Toolbar inside Cards */
+        .admin-toolbar {
+            display: flex;
+            gap: 6px;
+            background: #F8FAFC;
+            padding: 6px 10px;
+            border-radius: 12px;
+            border: 1px solid #CBD5E1;
+            margin-top: 12px;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .admin-toolbar button {
+            background: white;
+            border: 1px solid #CBD5E1;
+            padding: 4px 8px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 2px;
+            color: var(--text-main);
+        }
+
+        .admin-toolbar button:hover {
+            background: var(--primary-light);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .admin-toolbar button.delete-btn:hover {
+            background: #FEE2E2;
+            border-color: #EF4444;
+            color: #EF4444;
         }
 
         /* Badges */
@@ -294,7 +343,6 @@
             border-radius: 30px;
             font-size: 11px;
             font-weight: 700;
-            letter-spacing: 0.2px;
         }
 
         .badge.pending { background: #FEF3C7; color: #B45309; border: 1px solid #FDE68A; }
@@ -302,18 +350,18 @@
         .badge.amount { background: #E0F2FE; color: #0369A1; font-size: 13px; font-weight: 800; border: 1px solid #BAE6FD; }
         .badge.admin { background: var(--primary-light); color: var(--primary); border: 1px solid #5EEAD4; }
 
-        /* Bank Account Glass Box */
+        /* Bank Box */
         .bank-box {
             background: linear-gradient(135deg, #FFFFFF 0%, #F0FDFA 100%);
-            border: 1.5px solid #5EEAD4;
-            padding: 22px;
-            border-radius: 24px;
+            border: 2px solid #5EEAD4;
+            padding: 24px;
+            border-radius: 26px;
             margin-bottom: 24px;
-            box-shadow: var(--card-shadow);
+            box-shadow: 0 15px 35px rgba(13, 148, 136, 0.2);
         }
 
         .bank-box h3 {
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 14px;
@@ -329,10 +377,6 @@
             font-weight: 500;
         }
 
-        .bank-details strong {
-            color: var(--text-main);
-        }
-
         /* Profile Section */
         .profile-header {
             text-align: center;
@@ -340,31 +384,31 @@
         }
 
         .avatar-circle {
-            width: 84px;
-            height: 84px;
+            width: 88px;
+            height: 88px;
             background: linear-gradient(135deg, var(--primary-light), #99F6E4);
             color: var(--primary);
-            font-size: 30px;
+            font-size: 32px;
             font-weight: 800;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 16px;
-            box-shadow: 0 10px 25px rgba(15, 118, 110, 0.2);
-            border: 2px solid #FFFFFF;
+            box-shadow: 0 12px 30px rgba(13, 148, 136, 0.3);
+            border: 3px solid #FFFFFF;
         }
 
         .profile-tile {
-            background: var(--surface);
-            padding: 16px 18px;
-            border-radius: 18px;
-            border: 1.5px solid var(--border);
+            background: #FFFFFF;
+            padding: 16px 20px;
+            border-radius: 20px;
+            border: 1.5px solid rgba(13, 148, 136, 0.25);
             margin-bottom: 12px;
             display: flex;
             align-items: center;
             gap: 16px;
-            box-shadow: var(--card-shadow);
+            box-shadow: var(--card-shading);
         }
 
         .profile-tile span.material-icons-outlined {
@@ -372,9 +416,10 @@
             background: var(--primary-light);
             padding: 10px;
             border-radius: 14px;
+            border: 1px solid #5EEAD4;
         }
 
-        /* Secret Admin Button */
+        /* Secret Admin Button & Customization Panel */
         .admin-action-box {
             text-align: center;
             margin-top: 35px;
@@ -382,9 +427,9 @@
 
         .secret-btn {
             background: transparent;
-            border: 1.5px dashed var(--border);
-            padding: 12px 24px;
-            border-radius: 16px;
+            border: 1.5px dashed rgba(13, 148, 136, 0.4);
+            padding: 14px 26px;
+            border-radius: 18px;
             color: #64748B;
             font-size: 12px;
             font-weight: 600;
@@ -392,16 +437,26 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            transition: all 0.2s;
         }
 
-        .secret-btn:hover {
-            border-color: var(--primary);
+        .customization-panel {
+            background: #FFFFFF;
+            padding: 16px;
+            border-radius: 18px;
+            border: 1.5px solid var(--primary);
+            margin-top: 15px;
+            text-align: left;
+            display: none;
+        }
+
+        .customization-panel h4 {
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 10px;
             color: var(--primary);
-            background: var(--primary-light);
         }
 
-        /* Bottom Floating Navigation Bar */
+        /* Bottom Navigation Bar */
         .bottom-nav {
             position: absolute;
             bottom: 0;
@@ -409,12 +464,12 @@
             width: 100%;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
-            border-top: 1.5px solid var(--border-light);
+            border-top: 2px solid rgba(13, 148, 136, 0.2);
             display: flex;
             justify-content: space-around;
-            padding: 12px 6px 18px 6px;
+            padding: 12px 6px 20px 6px;
             z-index: 20;
-            box-shadow: 0 -10px 30px rgba(0,0,0,0.04);
+            box-shadow: 0 -15px 35px rgba(13, 148, 136, 0.1);
         }
 
         .nav-item {
@@ -428,13 +483,11 @@
             font-weight: 600;
             cursor: pointer;
             gap: 4px;
-            transition: all 0.2s;
             flex: 1;
         }
 
         .nav-item span.material-icons-outlined {
             font-size: 22px;
-            transition: transform 0.2s;
         }
 
         .nav-item.active {
@@ -442,41 +495,34 @@
             font-weight: 800;
         }
 
-        .nav-item.active span.material-icons-outlined {
-            transform: translateY(-2px);
-        }
-
-        /* Floating Action Button (FAB) */
+        /* FAB */
         .fab {
             position: absolute;
-            bottom: 90px;
+            bottom: 92px;
             right: 20px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent-teal) 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, #14B8A6 100%);
             color: white;
-            width: 56px;
-            height: 56px;
+            width: 58px;
+            height: 58px;
             border-radius: 50%;
             border: none;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 25px rgba(15, 118, 110, 0.4);
+            box-shadow: 0 12px 30px rgba(13, 148, 136, 0.5);
             cursor: pointer;
             display: none;
             z-index: 25;
-            transition: transform 0.2s;
-            border: 2px solid #FFFFFF;
+            border: 3px solid #FFFFFF;
         }
 
-        .fab:hover { transform: scale(1.08); }
-
-        /* Modals / Dialogs */
+        /* Modals */
         .modal {
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(15, 23, 42, 0.55);
-            backdrop-filter: blur(6px);
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(8px);
             justify-content: center;
             align-items: center;
             padding: 20px;
@@ -486,27 +532,13 @@
         .modal.open { display: flex; }
 
         .modal-card {
-            background: var(--surface);
-            padding: 26px;
-            border-radius: 28px;
+            background: #FFFFFF;
+            padding: 28px;
+            border-radius: 30px;
             width: 100%;
             max-width: 380px;
-            box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
-            border: 1.5px solid var(--border);
-            animation: scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        @keyframes scaleIn {
-            from { opacity: 0; transform: scale(0.92); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .modal-card h3 {
-            font-size: 18px;
-            font-weight: 800;
-            margin-bottom: 20px;
-            color: var(--text-main);
-            letter-spacing: -0.3px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+            border: 2px solid rgba(13, 148, 136, 0.4);
         }
 
         .form-group {
@@ -524,19 +556,11 @@
         .form-group input, .form-group textarea, .form-group select {
             width: 100%;
             padding: 13px 16px;
-            border: 1.5px solid var(--border);
+            border: 1.5px solid rgba(13, 148, 136, 0.3);
             border-radius: 14px;
             font-size: 14px;
             outline: none;
             background: #F8FAFC;
-            color: var(--text-main);
-            font-weight: 500;
-            transition: border-color 0.2s;
-        }
-
-        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-            border-color: var(--primary);
-            background: #FFFFFF;
         }
 
         .modal-actions {
@@ -553,21 +577,23 @@
             font-weight: 700;
             cursor: pointer;
             border: none;
-            transition: opacity 0.2s;
         }
 
-        .btn-sec { background: #F1F5F9; color: var(--text-main); border: 1.5px solid var(--border-light); }
-        .btn-pri { background: var(--primary); color: white; box-shadow: 0 4px 12px rgba(15, 118, 110, 0.3); }
+        .btn-sec { background: #F1F5F9; color: var(--text-main); border: 1.5px solid rgba(13, 148, 136, 0.3); }
+        .btn-pri { background: var(--primary); color: white; box-shadow: 0 8px 20px rgba(13, 148, 136, 0.3); }
     </style>
 </head>
 <body>
 
 <div class="app-container">
-    <!-- App Header -->
+    <!-- App Header with Logo & Large Title -->
     <div class="app-bar">
-        <div class="app-title">
-            <h1>அஹ்லுல் வஃபா</h1>
-            <p>اهل الوفاء - சேவை மையம்</p>
+        <div class="brand-box">
+            <div class="logo-circle"></div>
+            <div class="app-title-box">
+                <div class="decorated-title">✦ அஹ்லுல் வஃபா ✦</div>
+                <div class="arabic-subtitle">اهل الوفاء - சேவை மையம்</div>
+            </div>
         </div>
         <div id="adminBadge" style="display:none;">
             <span class="badge admin">அட்மின் மோட்</span>
@@ -684,10 +710,16 @@
                     நிர்வாகி பகுதி (Admin Login)
                 </button>
             </div>
-            <div class="admin-action-box" id="adminLogoutSection" style="display:none;">
-                <button class="btn btn-sec" onclick="logoutAdmin()" style="color: #EF4444; border: 1.5px solid #FCA5A5; width: 100%;">
-                    வெளியேறு (Logout Admin)
-                </button>
+            
+            <!-- Admin Customization & Management Panel -->
+            <div class="customization-panel" id="adminPanel" style="display:none;">
+                <h4>⚙️ நிர்வாகி எடிட்டிங் கட்டுப்பாடுகள்</h4>
+                <div class="form-group" style="margin-bottom: 10px;">
+                    <label>தீம் கலர் மாற்ற (Theme Color)</label>
+                    <input type="color" id="themeColorPicker" value="#0D9488" onchange="changeThemeColor(this.value)" style="height: 38px; padding: 2px; cursor: pointer;">
+                </div>
+                <button class="btn btn-sec" onclick="openPasswordModal()" style="width: 100%; margin-bottom: 8px; font-size: 12px;">🔑 கடவுச்சொல்லை மாற்றுக</button>
+                <button class="btn btn-sec" onclick="logoutAdmin()" style="width: 100%; color: #EF4444; border-color: #FCA5A5; font-size: 12px;">வெளியேறு (Logout Admin)</button>
             </div>
         </div>
     </div>
@@ -741,11 +773,27 @@
     </div>
 </div>
 
-<!-- Add Record Modal -->
+<!-- Change Password Modal -->
+<div class="modal" id="passwordModal">
+    <div class="modal-card">
+        <h3>புதிய கடவுச்சொல் அமைக்க</h3>
+        <div class="form-group">
+            <label>புதிய கடவுச்சொல் (New Password)</label>
+            <input type="password" id="newPasswordInput" placeholder="புதிய பாஸ்வேர்ட்">
+        </div>
+        <div class="modal-actions">
+            <button class="btn btn-sec" onclick="closePasswordModal()">ரத்து</button>
+            <button class="btn btn-pri" onclick="saveNewPassword()">மாற்று</button>
+        </div>
+    </div>
+</div>
+
+<!-- Add/Edit Record Modal -->
 <div class="modal" id="addServiceModal">
     <div class="modal-card">
-        <h3>புதிய பதிவு சேர்த்தல்</h3>
-        <div class="form-group">
+        <h3 id="modalTitle">புதிய பதிவு சேர்த்தல்</h3>
+        <input type="hidden" id="editId" value="">
+        <div class="form-group" id="typeGroup">
             <label>பிரிவு</label>
             <select id="addType" onchange="toggleAddFields()">
                 <option value="service">சேவை (Service)</option>
@@ -785,13 +833,14 @@
 
         <div class="modal-actions">
             <button class="btn btn-sec" onclick="closeAddModal()">ரத்து</button>
-            <button class="btn btn-pri" onclick="saveNewEntry()">சேர்</button>
+            <button class="btn btn-pri" onclick="saveNewEntry()">சேமி</button>
         </div>
     </div>
 </div>
 
 <script>
     let isAdmin = false;
+    let adminPassword = '12345'; // ஆரம்பகட்ட பாஸ்வேர்ட்
 
     let services = [
         { id: 1, title: 'மருத்துவ உதவி மற்றும் நிதி வழங்கல்', description: 'தேவைப்படும் ஏழை குடும்பத்தின் அவசர மருத்துவச் செலவுக்காக நிதி உதவி.', date: '2026-10-25', isCompleted: false },
@@ -817,19 +866,19 @@
         document.getElementById('totalDonation').innerText = '₹' + totalDonationAmount.toLocaleString();
 
         let recentHtml = '';
-        services.slice(0, 2).forEach(s => { recentHtml += createServiceCardHtml(s); });
-        document.getElementById('recentServicesList').innerHTML = recentHtml;
+        services.slice(0, 2).forEach((s, idx) => { recentHtml += createServiceCardHtml(s, idx, 'service'); });
+        document.getElementById('recentServicesList').innerHTML = recentHtml || '<p style="color:var(--text-sub); text-align:center; padding:15px; font-size:13px;">தரவுகள் எதுவும் இல்லை</p>';
 
         let pendingHtml = pending.length === 0 ? '<p style="color:var(--text-sub); text-align:center; padding:30px; font-size:13px;">தரவுகள் எதுவும் இல்லை</p>' : '';
-        pending.forEach(s => { pendingHtml += createServiceCardHtml(s); });
+        pending.forEach((s, idx) => { pendingHtml += createServiceCardHtml(s, idx, 'service'); });
         document.getElementById('pendingServicesList').innerHTML = pendingHtml;
 
         let completedHtml = completed.length === 0 ? '<p style="color:var(--text-sub); text-align:center; padding:30px; font-size:13px;">தரவுகள் எதுவும் இல்லை</p>' : '';
-        completed.forEach(s => { completedHtml += createServiceCardHtml(s); });
+        completed.forEach((s, idx) => { completedHtml += createServiceCardHtml(s, idx, 'service'); });
         document.getElementById('completedServicesList').innerHTML = completedHtml;
 
         let donorsHtml = donors.length === 0 ? '<p style="color:var(--text-sub); text-align:center; padding:30px; font-size:13px;">தரவுகள் எதுவும் இல்லை</p>' : '';
-        donors.forEach(d => {
+        donors.forEach((d, idx) => {
             donorsHtml += `
                 <div class="card-item">
                     <div class="card-header">
@@ -840,6 +889,13 @@
                         <span><span class="material-icons-outlined" style="font-size:13px; vertical-align:middle;">calendar_today</span> ${d.date}</span>
                         <span style="color: #059669; font-weight: 700; font-size: 11px;">நன்கொடை பெறப்பட்டது</span>
                     </div>
+                    ${isAdmin ? `
+                    <div class="admin-toolbar">
+                        <button onclick="moveItem('donor', ${idx}, 'up')"><span class="material-icons-outlined" style="font-size:14px;">arrow_upward</span>மேல்</button>
+                        <button onclick="moveItem('donor', ${idx}, 'down')"><span class="material-icons-outlined" style="font-size:14px;">arrow_downward</span>கீழ்</button>
+                        <button onclick="editDonor(${d.id})"><span class="material-icons-outlined" style="font-size:14px;">edit</span>மாற்று</button>
+                        <button class="delete-btn" onclick="deleteItem('donor', ${d.id})"><span class="material-icons-outlined" style="font-size:14px;">delete</span>அழி</button>
+                    </div>` : ''}
                 </div>
             `;
         });
@@ -848,10 +904,10 @@
         document.getElementById('addFabBtn').style.display = isAdmin ? 'flex' : 'none';
         document.getElementById('adminBadge').style.display = isAdmin ? 'block' : 'none';
         document.getElementById('adminControlSection').style.display = isAdmin ? 'none' : 'block';
-        document.getElementById('adminLogoutSection').style.display = isAdmin ? 'block' : 'none';
+        document.getElementById('adminPanel').style.display = isAdmin ? 'block' : 'none';
     }
 
-    function createServiceCardHtml(s) {
+    function createServiceCardHtml(s, idx, type) {
         return `
             <div class="card-item">
                 <div class="card-header">
@@ -867,8 +923,75 @@
                     <span><span class="material-icons-outlined" style="font-size:13px; vertical-align:middle; margin-right:2px;">calendar_today</span> ${s.date}</span>
                     <span class="badge ${s.isCompleted ? 'completed' : 'pending'}">${s.isCompleted ? 'முடிந்தது' : 'செயல்முறையில்'}</span>
                 </div>
+                ${isAdmin ? `
+                <div class="admin-toolbar">
+                    <button onclick="moveItem('service', ${idx}, 'up')"><span class="material-icons-outlined" style="font-size:14px;">arrow_upward</span>மேல்</button>
+                    <button onclick="moveItem('service', ${idx}, 'down')"><span class="material-icons-outlined" style="font-size:14px;">arrow_downward</span>கீழ்</button>
+                    <button onclick="editService(${s.id})"><span class="material-icons-outlined" style="font-size:14px;">edit</span>மாற்று</button>
+                    <button class="delete-btn" onclick="deleteItem('service', ${s.id})"><span class="material-icons-outlined" style="font-size:14px;">delete</span>அழி</button>
+                </div>` : ''}
             </div>
         `;
+    }
+
+    // Move items Up/Down
+    function moveItem(type, index, direction) {
+        let arr = type === 'service' ? services : donors;
+        if (direction === 'up' && index > 0) {
+            let temp = arr[index];
+            arr[index] = arr[index - 1];
+            arr[index - 1] = temp;
+        } else if (direction === 'down' && index < arr.length - 1) {
+            let temp = arr[index];
+            arr[index] = arr[index + 1];
+            arr[index + 1] = temp;
+        }
+        renderApp();
+    }
+
+    // Delete item
+    function deleteItem(type, id) {
+        if (confirm('நிச்சயமாக இதை அழிக்க விரும்புகிறீர்களா?')) {
+            if (type === 'service') {
+                services = services.filter(s => s.id !== id);
+            } else {
+                donors = donors.filter(d => d.id !== id);
+            }
+            renderApp();
+        }
+    }
+
+    // Edit functions
+    function editService(id) {
+        const s = services.find(item => item.id === id);
+        if (s) {
+            document.getElementById('editId').value = s.id;
+            document.getElementById('modalTitle').innerText = 'சேவையைத் திருத்துக';
+            document.getElementById('addType').value = 'service';
+            document.getElementById('typeGroup').style.display = 'none';
+            document.getElementById('serviceFields').style.display = 'block';
+            document.getElementById('donorFields').style.display = 'none';
+            document.getElementById('newTitle').value = s.title;
+            document.getElementById('newDesc').value = s.description;
+            document.getElementById('newDate').value = s.date;
+            document.getElementById('addServiceModal').classList.add('open');
+        }
+    }
+
+    function editDonor(id) {
+        const d = donors.find(item => item.id === id);
+        if (d) {
+            document.getElementById('editId').value = d.id;
+            document.getElementById('modalTitle').innerText = 'நன்கொடையாளரைத் திருத்துக';
+            document.getElementById('addType').value = 'donor';
+            document.getElementById('typeGroup').style.display = 'none';
+            document.getElementById('serviceFields').style.display = 'none';
+            document.getElementById('donorFields').style.display = 'block';
+            document.getElementById('donorName').value = d.name;
+            document.getElementById('donorAmount').value = d.amount;
+            document.getElementById('donorDate').value = d.date;
+            document.getElementById('addServiceModal').classList.add('open');
+        }
     }
 
     function toggleStatus(id) {
@@ -894,12 +1017,12 @@
     function verifyLogin() {
         const u = document.getElementById('loginUser').value;
         const p = document.getElementById('loginPass').value;
-        if(u === 'admin' && p === '12345') {
+        if(u === 'admin' && p === adminPassword) {
             isAdmin = true;
             closeLoginModal();
             renderApp();
         } else {
-            alert('தவறான கடவுச்சொல்!');
+            alert('தவறான பயனர் பெயர் அல்லது கடவுச்சொல்!');
         }
     }
 
@@ -908,7 +1031,30 @@
         renderApp();
     }
 
-    function openAddModal() { document.getElementById('addServiceModal').classList.add('open'); }
+    // Password Change Functions
+    function openPasswordModal() { document.getElementById('passwordModal').classList.add('open'); }
+    function closePasswordModal() { document.getElementById('passwordModal').classList.remove('open'); }
+
+    function saveNewPassword() {
+        const newPass = document.getElementById('newPasswordInput').value;
+        if(newPass.trim() !== '') {
+            adminPassword = newPass;
+            closePasswordModal();
+            document.getElementById('newPasswordInput').value = '';
+            alert('கடவுச்சொல் வெற்றிகரமாக மாற்றப்பட்டது!');
+        } else {
+            alert('சரியான கடவுச்சொல்லை உள்ளிடவும்');
+        }
+    }
+
+    function openAddModal() {
+        document.getElementById('editId').value = '';
+        document.getElementById('modalTitle').innerText = 'புதிய பதிவு சேர்த்தல்';
+        document.getElementById('typeGroup').style.display = 'block';
+        toggleAddFields();
+        document.getElementById('addServiceModal').classList.add('open');
+    }
+    
     function closeAddModal() { document.getElementById('addServiceModal').classList.remove('open'); }
 
     function toggleAddFields() {
@@ -923,34 +1069,54 @@
     }
 
     function saveNewEntry() {
+        const editId = document.getElementById('editId').value;
         const type = document.getElementById('addType').value;
-        if(type === 'service') {
-            const title = document.getElementById('newTitle').value;
-            const desc = document.getElementById('newDesc').value;
-            const date = document.getElementById('newDate').value;
-            if(title && desc && date) {
-                services.push({ id: Date.now(), title, description: desc, date, isCompleted: false });
-                closeAddModal();
-                renderApp();
-                document.getElementById('newTitle').value = '';
-                document.getElementById('newDesc').value = '';
+
+        if (editId) {
+            if (type === 'service') {
+                const s = services.find(item => item.id == editId);
+                if (s) {
+                    s.title = document.getElementById('newTitle').value;
+                    s.description = document.getElementById('newDesc').value;
+                    s.date = document.getElementById('newDate').value;
+                }
             } else {
-                alert('அனைத்து விவரங்களையும் நிரப்பவும்');
+                const d = donors.find(item => item.id == editId);
+                if (d) {
+                    d.name = document.getElementById('donorName').value;
+                    d.amount = document.getElementById('donorAmount').value;
+                    d.date = document.getElementById('donorDate').value;
+                }
             }
         } else {
-            const name = document.getElementById('donorName').value;
-            const amount = document.getElementById('donorAmount').value;
-            const date = document.getElementById('donorDate').value;
-            if(name && amount && date) {
-                donors.push({ id: Date.now(), name, amount, date });
-                closeAddModal();
-                renderApp();
-                document.getElementById('donorName').value = '';
-                document.getElementById('donorAmount').value = '';
+            if(type === 'service') {
+                const title = document.getElementById('newTitle').value;
+                const desc = document.getElementById('newDesc').value;
+                const date = document.getElementById('newDate').value;
+                if(title && desc && date) {
+                    services.push({ id: Date.now(), title, description: desc, date, isCompleted: false });
+                } else {
+                    alert('அனைத்து விவரங்களையும் நிரப்பவும்');
+                    return;
+                }
             } else {
-                alert('அனைத்து விவரங்களையும் நிரப்பவும்');
+                const name = document.getElementById('donorName').value;
+                const amount = document.getElementById('donorAmount').value;
+                const date = document.getElementById('donorDate').value;
+                if(name && amount && date) {
+                    donors.push({ id: Date.now(), name, amount, date });
+                } else {
+                    alert('அனைத்து விவரங்களையும் நிரப்பவும்');
+                    return;
+                }
             }
         }
+        closeAddModal();
+        renderApp();
+    }
+
+    function changeThemeColor(color) {
+        document.documentElement.style.setProperty('--primary', color);
     }
 
     renderApp();
